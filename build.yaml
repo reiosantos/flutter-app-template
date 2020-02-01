@@ -1,0 +1,8 @@
+targets:
+  $default:
+    builders:
+      json_serializable:
+        enabled: true
+        options:
+          any_map: true
+          checked: true
