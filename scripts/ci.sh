@@ -30,7 +30,7 @@ runDriver () {
     if [[ -f "lib/main.dart" ]]; then
         echo "Running integration tests in $1..."
         flutter packages get
-        flutter driver test_driver/todo_app.dart
+        flutter driver test_driver/all_integraton_tests.dart
     fi
     exitCode=$?
     cd - > /dev/null

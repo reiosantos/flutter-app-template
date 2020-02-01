@@ -1,6 +1,6 @@
 import 'package:san/src/index.dart';
 
-mixin SanColors {
+abstract class SanColors {
   static const int _primary = 0xFF333333; // rgb(51,51,51)
   static const int _secondary = 0xFFFFC400; // rgb(255,196,0)
 

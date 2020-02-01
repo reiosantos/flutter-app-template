@@ -160,7 +160,7 @@ jobs:
       #      osx_image: xcode9.4
       #      osx_image: xcode9.2
       osx_image: xcode11.2 # for firebase
-      env: bloc_flutter_ios
+      env: flutter_app_ios
       #      env: vanilla_ios
       # Run integration tests on ios
       before_install: &before_install_osx
@@ -185,7 +185,7 @@ jobs:
         - export PATH="$PATH":"$HOME/.pub-cache/bin"
         - export PATH=$PWD/flutter/bin:$PWD/flutter/bin/cache/dart-sdk/bin:$PATH
         - flutter doctor -v
-      script: travis_retry ./scripts/ci.sh ./bloc_flutter
+      script: travis_retry ./scripts/ci.sh .
       cache:
         directories:
           - $HOME/.pub-cache
@@ -204,7 +204,7 @@ jobs:
 
 #  allow_failures:
 #    - env:
-#        - bloc_flutter_ios
+#        - flutter_ios
 #        - built_redux_android
 #        - firestore_redux_android
 #        - firestore_redux_ios

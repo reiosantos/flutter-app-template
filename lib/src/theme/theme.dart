@@ -1,10 +1,10 @@
 import 'package:san/src/index.dart';
 import 'package:san/src/theme/colors.dart';
 
-class AppTheme with SanColors {
+class AppTheme extends SanColors {
   @override
   ThemeData createTheme() {
-    final ThemeData base = ThemeData(
+    final base = ThemeData(
         primarySwatch: SanColors.primaryColor,
         primaryColor: SanColors.sanPrimary,
         primaryColorDark: SanColors.sanPrimaryDark,
