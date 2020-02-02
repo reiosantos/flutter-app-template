@@ -2,6 +2,8 @@
 
 Flutter App Template
 
+[![Build Status](https://travis-ci.com/reiosantos/flutter-app-template.svg?branch=master)](https://travis-ci.com/reiosantos/flutter-app-template)
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.

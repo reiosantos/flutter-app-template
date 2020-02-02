@@ -171,7 +171,8 @@ jobs:
         #        # boot simulator
         #        - xcrun simctl boot $udid
         #        - xcrun simctl list
-        - xcrun simctl create "iPhone X" com.apple.CoreSimulator.SimDeviceType.iPhone-X com.apple.CoreSimulator.SimRuntime.iOS-13-3 | xargs xcrun simctl boot
+        - xcrun simctl list
+        - xcrun simctl create "iPhone 11 Pro" com.apple.CoreSimulator.SimDeviceType.iPhone-11-Pro com.apple.CoreSimulator.SimRuntime.iOS-13-2 | xargs xcrun simctl boot
         # skip homebrew update
         - export HOMEBREW_NO_AUTO_UPDATE=1
         #        - brew update
@@ -189,18 +190,6 @@ jobs:
       cache:
         directories:
           - $HOME/.pub-cache
-
-    - <<: *integration-test
-      os: linux
-      env: flutter_app_android
-      script: travis_retry ./scripts/ci.sh .
-
-    - <<: *integration-test
-      os: osx
-      osx_image: xcode11.2
-      env: flutter_app_ios
-      before_install: *before_install_osx
-      script: travis_retry ./scripts/ci.sh .
 
 #  allow_failures:
 #    - env:

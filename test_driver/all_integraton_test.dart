@@ -1,3 +1,4 @@
+import './counter_test.dart' as counter;
 
 void main() {
   // _blocs
@@ -11,4 +12,5 @@ void main() {
   // _ui
 
   // _other
+  counter.main();
 }
