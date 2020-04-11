@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:san/src/index.dart';
 
 class RouteNotFound extends StatelessWidget {
   final String name;
@@ -7,10 +7,6 @@ class RouteNotFound extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Text('Route for `$name` is not defined'),
-      ),
-    );
+    return Center(child: Text('Route for `$name` is not defined'));
   }
 }

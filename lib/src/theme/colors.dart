@@ -57,5 +57,5 @@ abstract class SanColors {
     };
   }
 
-  ThemeData createTheme();
+  Diagnosticable createTheme();
 }

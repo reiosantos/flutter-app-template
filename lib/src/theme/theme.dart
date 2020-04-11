@@ -3,7 +3,7 @@ import 'package:san/src/theme/colors.dart';
 
 class AppTheme extends SanColors {
   @override
-  ThemeData createTheme() {
+  Diagnosticable createTheme() {
     final base = ThemeData(
         primarySwatch: SanColors.primaryColor,
         primaryColor: SanColors.sanPrimary,
@@ -12,6 +12,14 @@ class AppTheme extends SanColors {
         accentColor: SanColors.sanSecondary,
         backgroundColor: SanColors.sanPrimaryDark);
 
+    final iosBase = CupertinoThemeData(
+        primaryColor: SanColors.sanPrimary,
+        scaffoldBackgroundColor: SanColors.sanPrimaryDark,
+        barBackgroundColor: SanColors.sanPrimaryDark);
+
+    if (Platform.isIOS) {
+      return iosBase;
+    }
     return base.copyWith(
       buttonTheme: base.buttonTheme.copyWith(
         textTheme: ButtonTextTheme.normal,
