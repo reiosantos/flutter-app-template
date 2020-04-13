@@ -1,5 +1,7 @@
 const String APP_TITLE = 'App Template';
 
+enum ThemeSwitchMode { LIGHT, DARK, SYSTEM }
+
 class ScreenArguments {
   final String title;
 

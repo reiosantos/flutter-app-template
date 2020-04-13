@@ -9,3 +9,4 @@ export 'package:flutter_bloc/flutter_bloc.dart';
 export 'package:http/http.dart';
 export 'package:meta/meta.dart';
 export 'package:rxdart/rxdart.dart' hide Notification;
+export 'package:shared_preferences/shared_preferences.dart';

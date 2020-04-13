@@ -1,8 +1,8 @@
 import 'package:san/src/index.dart';
 import 'package:san/src/theme/colors.dart';
 
-class SanSearchBar extends StatelessWidget {
-  const SanSearchBar(
+class WhmSearchBar extends StatelessWidget {
+  const WhmSearchBar(
       {@required this.shrinkOffset, @required this.expandedHeight});
 
   final double shrinkOffset;
@@ -23,12 +23,11 @@ class SanSearchBar extends StatelessWidget {
                 child: DecoratedBox(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5.0),
-                        border:
-                            Border.all(color: SanColors.sanGray, width: 1.0),
-                        color: SanColors.sanWhite),
+                        border: Border.all(color: Colors.grey, width: 1.0),
+                        color: Colors.white),
                     child: Row(children: <Widget>[
                       IconButton(
-                          icon: Icon(Icons.menu, color: SanColors.sanPrimary),
+                          icon: Icon(Icons.menu, color: SanColors.primary),
                           onPressed: () {
                             if (_scaffold.hasDrawer) {
                               _scaffold.openDrawer();
@@ -40,7 +39,7 @@ class SanSearchBar extends StatelessWidget {
                         hintText: 'Search',
                       ))),
                       IconButton(
-                          icon: Icon(Icons.search, color: SanColors.sanPrimary),
+                          icon: Icon(Icons.search, color: SanColors.primary),
                           onPressed: () {
                             print('your menu action here');
                           })

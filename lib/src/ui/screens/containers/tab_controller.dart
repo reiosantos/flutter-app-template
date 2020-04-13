@@ -1,4 +1,5 @@
 import 'package:san/src/index.dart';
+import 'package:san/src/ui/screens/components/theme_switch.dart';
 import 'package:san/src/ui/screens/home.dart';
 import 'package:san/src/ui/screens/notifications.dart';
 import 'package:san/src/ui/screens/people.dart';
@@ -38,9 +39,13 @@ class _SanTabController extends State<SanTabController> {
     SettingPage()
   ];
 
-  Widget _ios() {
+  Widget _ios(BuildContext context) {
+    var theme = CupertinoTheme.of(context);
+
     return CupertinoTabScaffold(
       tabBar: CupertinoTabBar(
+        backgroundColor: theme.barBackgroundColor,
+        activeColor: theme.textTheme.textStyle.color,
         items: tabs,
       ),
       tabBuilder: (BuildContext context, int index) {
@@ -49,6 +54,7 @@ class _SanTabController extends State<SanTabController> {
             return CupertinoPageScaffold(
               navigationBar: CupertinoNavigationBar(
                 middle: Text(APP_TITLE),
+                leading: ThemeSwitch(),
               ),
               child: items[index],
             );
@@ -58,7 +64,9 @@ class _SanTabController extends State<SanTabController> {
     );
   }
 
-  Widget _android() {
+  Widget _android(BuildContext context) {
+    var appBarTheme = Theme.of(context).appBarTheme;
+
     return DefaultTabController(
       length: tabs.length,
       child: Scaffold(
@@ -66,10 +74,17 @@ class _SanTabController extends State<SanTabController> {
         resizeToAvoidBottomInset: false,
         body: Scaffold(
           appBar: AppBar(
+            leading: ThemeSwitch(),
             title: Center(child: Text(APP_TITLE)),
           ),
           body: items[widget._selectedPage],
           bottomNavigationBar: BottomNavigationBar(
+            backgroundColor: appBarTheme.color,
+            selectedIconTheme: appBarTheme.iconTheme,
+            unselectedIconTheme: appBarTheme.iconTheme.copyWith(
+              color: Colors.grey,
+            ),
+            type: BottomNavigationBarType.fixed,
             currentIndex: widget._selectedPage,
             onTap: (int index) {
               setState(() {
@@ -86,8 +101,8 @@ class _SanTabController extends State<SanTabController> {
   @override
   Widget build(BuildContext context) {
     if (Platform.isIOS) {
-      return _ios();
+      return _ios(context);
     }
-    return _android();
+    return _android(context);
   }
 }

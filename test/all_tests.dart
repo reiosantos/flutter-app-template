@@ -1,6 +1,10 @@
+import 'package:san/src/providers/service_locator.dart';
+
 import 'widget_test.dart' as widget_test;
 
 void main() {
+  setupLocator();
+
   // _blocs
 
   // _models
@@ -13,5 +17,4 @@ void main() {
 
   // _other
   widget_test.main();
-
 }
