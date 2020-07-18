@@ -13,6 +13,12 @@ Widget _wrapper(Widget page) {
 Route<dynamic> onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {
     default:
+      if (Platform.isIOS) {
+        return CupertinoPageRoute<dynamic>(
+          builder: (BuildContext context) =>
+              _wrapper(RouteNotFound(name: settings.name)),
+        );
+      }
       return MaterialPageRoute<dynamic>(
         builder: (BuildContext context) =>
             _wrapper(RouteNotFound(name: settings.name)),

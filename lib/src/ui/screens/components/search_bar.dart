@@ -1,8 +1,8 @@
 import 'package:san/src/index.dart';
 import 'package:san/src/theme/colors.dart';
 
-class WhmSearchBar extends StatelessWidget {
-  const WhmSearchBar(
+class SanSearchBar extends StatelessWidget {
+  const SanSearchBar(
       {@required this.shrinkOffset, @required this.expandedHeight});
 
   final double shrinkOffset;
@@ -41,6 +41,7 @@ class WhmSearchBar extends StatelessWidget {
                       IconButton(
                           icon: Icon(Icons.search, color: SanColors.primary),
                           onPressed: () {
+                            // TODO(reiosantos): implement search functionality on search bar
                             print('your menu action here');
                           })
                     ])))));

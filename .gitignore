@@ -88,3 +88,4 @@ unlinked_spec.ds
 
 # Coverage
 coverage/
+flutter_export_environment.sh

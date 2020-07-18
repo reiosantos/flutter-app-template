@@ -9,14 +9,16 @@ class AppTheme extends SanColors {
 
     return ThemeData(
       primarySwatch: SanColors.primaryColor,
-      accentColor: SanColors.accent,
+      accentColor: SanColors.accentColor,
       scaffoldBackgroundColor: SanColors.lightBackground,
+      iconTheme: theme.iconTheme,
       appBarTheme: theme.appBarTheme.copyWith(
         elevation: 0,
         textTheme: theme.textTheme,
+        iconTheme: theme.iconTheme,
       ),
       textTheme: theme.textTheme.copyWith(
-        title: theme.textTheme.title.copyWith(
+        headline6: theme.textTheme.headline6.copyWith(
           fontSize: 18.0,
           fontWeight: FontWeight.bold,
         ),
@@ -31,32 +33,45 @@ class AppTheme extends SanColors {
       Color backgroundColor, Color textColor, Brightness brightness) {
     var base = (_createTheme() as ThemeData);
 
+    var isLight = brightness == Brightness.light;
+
     base = base.copyWith(
       brightness: brightness,
       backgroundColor: backgroundColor,
       scaffoldBackgroundColor: backgroundColor,
+      dialogBackgroundColor: backgroundColor,
+      iconTheme: base.iconTheme.copyWith(
+        color: textColor,
+      ),
       appBarTheme: base.appBarTheme.copyWith(
         color: backgroundColor,
+        brightness: brightness,
         textTheme: base.appBarTheme.textTheme.copyWith(
-          title: base.appBarTheme.textTheme.title.copyWith(
+          headline6: base.appBarTheme.textTheme.headline6.copyWith(
             color: textColor,
           ),
-          body1: base.appBarTheme.textTheme.body1.copyWith(
+          bodyText2: base.appBarTheme.textTheme.bodyText2.copyWith(
+            color: textColor,
+          ),
+          button: base.appBarTheme.textTheme.button.copyWith(
             color: textColor,
           ),
         ),
         actionsIconTheme: base.accentIconTheme.copyWith(
           color: textColor,
         ),
-        iconTheme: base.iconTheme.copyWith(
+        iconTheme: base.appBarTheme.iconTheme.copyWith(
           color: textColor,
         ),
       ),
       textTheme: base.textTheme.copyWith(
-        title: base.textTheme.title.copyWith(
+        headline6: base.textTheme.headline6.copyWith(
           color: textColor,
         ),
-        body1: base.textTheme.body1.copyWith(
+        bodyText2: base.textTheme.bodyText2.copyWith(
+          color: textColor,
+        ),
+        button: base.textTheme.button.copyWith(
           color: textColor,
         ),
       ),
@@ -70,10 +85,18 @@ class AppTheme extends SanColors {
       ),
     );
 
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: base.appBarTheme.color,
+      systemNavigationBarColor: base.appBarTheme.color,
+      systemNavigationBarIconBrightness:
+          isLight ? Brightness.dark : Brightness.light,
+    ));
+
     if (Platform.isIOS) {
       var base1 = CupertinoThemeData();
       base1 = base1.copyWith(
         primaryColor: SanColors.primaryColor,
+        primaryContrastingColor: SanColors.accentColor,
         barBackgroundColor: backgroundColor,
         scaffoldBackgroundColor: backgroundColor,
         brightness: brightness,

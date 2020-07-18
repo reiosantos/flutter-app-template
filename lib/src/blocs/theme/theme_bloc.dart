@@ -5,8 +5,10 @@ import './theme_event.dart';
 import './theme_state.dart';
 
 class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
-  @override
-  ThemeState get initialState => ChangeThemeState.lightTheme();
+  final ThemeState initialState;
+
+  ThemeBloc({this.initialState})
+      : super(initialState ?? ChangeThemeState.lightTheme());
 
   @override
   Stream<ThemeState> mapEventToState(ThemeEvent event) async* {

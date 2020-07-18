@@ -1,36 +1,37 @@
 import 'package:san/src/index.dart';
 
 class SanRaisedButton extends StatelessWidget {
-  Widget _iosButton() {
+  final String text;
+  final VoidCallback onPressed;
+  SanRaisedButton(this.text, this.onPressed);
+
+  Widget _iosButton(BuildContext context) {
+    var textStyle = CupertinoTheme.of(context).textTheme.textStyle;
+
     return CupertinoButton(
-      onPressed: () {},
-      color: Colors.lightBlueAccent,
-      padding: EdgeInsets.only(left: 10.0, right: 10.0),
-      child: const Text('IOS Button', style: TextStyle(fontSize: 20)),
+      onPressed: onPressed,
+      color: CupertinoTheme.of(context).primaryContrastingColor.withOpacity(.7),
+      padding: EdgeInsets.only(left: 16.0, right: 16.0),
+      child: Text(text, style: textStyle),
     );
   }
 
-  Widget _androidButton() {
-    return RaisedButton(
-      onPressed: () {},
-      child: const Text('Android Button', style: TextStyle(fontSize: 20)),
-    );
-  }
+  Widget _androidButton(BuildContext context) {
+    var textStyle = Theme.of(context).textTheme.bodyText2;
 
-  Widget _webButton() {
     return RaisedButton(
-      onPressed: () {},
-      child: const Text('Web Button', style: TextStyle(fontSize: 20)),
+      onPressed: onPressed,
+      color: Theme.of(context).accentColor.withOpacity(.7),
+      padding: EdgeInsets.only(left: 16.0, right: 16.0),
+      child: Text(text, style: textStyle),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     if (Platform.isIOS) {
-      return _iosButton();
-    } else if (Platform.isAndroid) {
-      return _androidButton();
+      return _iosButton(context);
     }
-    return _webButton();
+    return _androidButton(context);
   }
 }
