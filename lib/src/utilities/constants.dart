@@ -8,8 +8,9 @@ enum ThemeSwitchMode { LIGHT, DARK, SYSTEM }
 
 class ScreenArguments {
   final String title;
+  final Map<String, dynamic> extraArgs;
 
-  ScreenArguments(this.title);
+  ScreenArguments(this.title, {this.extraArgs});
 }
 
 class Routes {

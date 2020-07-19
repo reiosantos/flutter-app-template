@@ -2,9 +2,10 @@ import 'package:san/src/index.dart';
 import 'package:san/src/utilities/constants.dart';
 
 class PlatformWrapper extends StatelessWidget {
-  const PlatformWrapper({@required this.page});
+  const PlatformWrapper({@required this.page, this.title = ''});
 
   final Widget page;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +14,7 @@ class PlatformWrapper extends StatelessWidget {
     if (Platform.isIOS) {
       return CupertinoPageScaffold(
         navigationBar: CupertinoNavigationBar(
-          middle: Text(args.title),
+          middle: Text(args?.title ?? title),
         ),
         child: page,
       );
@@ -24,7 +25,11 @@ class PlatformWrapper extends StatelessWidget {
       primary: true,
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
-        title: Center(child: Text(args.title)),
+        title: Row(
+          children: [
+            Text(args?.title ?? title),
+          ],
+        ),
       ),
       body: page,
     );
