@@ -1,7 +1,7 @@
 import 'package:san/src/index.dart';
 import 'package:san/src/ui/screens/components/platform_wrapper.dart';
-import 'package:san/src/ui/screens/home.dart';
-import 'package:san/src/ui/screens/route_not_found.dart';
+import 'package:san/src/ui/screens/pages/home/home.dart';
+import 'package:san/src/ui/screens/pages/route_not_found.dart';
 import 'package:san/src/utilities/constants.dart';
 
 Widget _wrapper(Widget page) {
